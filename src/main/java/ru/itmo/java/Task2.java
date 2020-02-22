@@ -11,21 +11,24 @@ public class Task2 {
      * - вывод 0.9
      */
     double getFractionalPart(double realNumber) {
-        return 0.0; //your code here
+
+        return realNumber - (int)realNumber; //your code here
     }
 
     /**
      * Дан символ, верните его код. Не используйте явное приведение типов и любые библиотечные функции
      */
     int charCode(char c) {
-        return 0; //your code here
+
+        return c; //your code here
     }
 
     /**
      * Даны 2 целых числа. Проверьте равны ли они
      */
-    boolean testIfIntsEqual(Integer a, Integer b) {
-        return false; //your code here
+    boolean testIfIntsEqual(Integer a, Integer b)
+    {
+        return Integer.compare(a, b) == 0; //your code here
     }
 
     /**
@@ -38,35 +41,44 @@ public class Task2 {
      * @param inclusively входят ли границы в заданный даипазон
      */
     boolean numberInRange(Integer number, Integer leftBound, Integer rightBound, Boolean inclusively) {
-        return false; //your code here
+        if (inclusively == null || number == null || leftBound == null || rightBound == null)
+            return false;
+
+        if (inclusively.booleanValue() && (number.intValue() >= leftBound.intValue() && number.intValue() <= rightBound.intValue()))
+            return  true;
+        return number.intValue() > leftBound.intValue() && number.intValue() < rightBound.intValue();
     }
 
     /**
      * Даны 3 символа. Определите является ли хотя бы один из них цифрой 1..9
      */
     boolean atLeastOneIsDigit(char c1, char c2, char c3) {
-        return false; //your code here
+        return Character.isDigit(c1) || Character.isDigit(c2) || Character.isDigit(c3); //your code here
     }
 
     /**
      * Даны два вещественных числа. Определите равны ли они
      */
     boolean areRealNumbersEqual(double a, double b) {
-        return false; //your code here
+        return Math.abs(a - b) < 1e-6;
     }
 
     /**
      * Дано трехзначное число 100 <= N <= 999. Найдите сумму его чисел.
      */
     int sumOfDigits(int n) {
-        return 0; //your code here
+        int sum = 0;
+        for (char i: Integer.toString(n).toCharArray()) {
+            sum += Character.getNumericValue(i);
+        }
+        return sum; //your code here
     }
 
     /**
      * Дано натуральное число N <= 10000. Выведите следующее после N четное число. Например: N = 8, Result = 10
      */
     int nextEvenNumber(int n) {
-        return 0; //your code here
+        return n + (2 - n%2); //your code here
     }
 
     /**
@@ -76,14 +88,18 @@ public class Task2 {
      * своем кабинете
      */
     int schoolDesks(int num1, int num2, int num3) {
-        return 0; //your code here
+        double n1 = Math.ceil((double)num1/2);
+        double n2 = Math.ceil((double)num2/2);
+        double n3 = Math.ceil((double)num3/2);
+
+        return (int)(n1+n2+n3); //your code here
     }
 
     /**
      * Дано натуральное число N >= 10. Выведите результат применения XOR к последним 2-м цифрам числа N
      */
     int xorDigits(int N) {
-        return 0; //your code here
+        return ((N%100)/10) ^ (N%10);
     }
 
 }
